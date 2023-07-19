@@ -1,5 +1,12 @@
+<!doctype html>
 <html>
+<head>
+    <meta charset="utf-8"/>
+    <title>cnbu笔记</title>
+</head>
 
+<body>
+<div id="content"></div>
 <a href=01LinuxSystem>01LinuxSystem</a>
 <a href=02databases>02databases</a>
 <a href=03middleware>03middleware</a>
@@ -9,4 +16,24 @@
 <a href=07monitor>07monitor</a>
 <a href=08network>08network</a>
 <a href=09automatic>09automatic</a>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            type:"get",
+            url:"html.md",
+            dataType:"html",
+            success:function(res){
+               show(res)
+            }
+        })
+
+        function show(data) {
+            document.getElementById('content').innerHTML = marked.parse(data);
+        }
+    })
+</script>
+</body>
 </html>
