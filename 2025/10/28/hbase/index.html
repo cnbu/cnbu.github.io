@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>hbase | Hexo</title>
+  <meta name="keywords" content=" hexo , 3-hexo ">
+  <meta name="description" content="hbase | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="常用命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354551.hbase shell1.1 进入hbase shell.&#x2F;hbase shell注意：当未配置全局环境变量时，需要在hbase安装bin目录下执行该命令。##1.2 退出hbase s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hbase">
+<meta property="og:url" content="http://example.com/2025/10/28/hbase/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="常用命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354551.hbase shell1.1 进入hbase shell.&#x2F;hbase shell注意：当未配置全局环境变量时，需要在hbase安装bin目录下执行该命令。##1.2 退出hbase s">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="d:\notes\cnbu.github.io\05%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE\assets\etdsedpxzp.png">
+<meta property="og:image" content="d:\notes\cnbu.github.io\05%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE\assets\15zwjw4ce3-1722932822003-7.png">
+<meta property="article:published_time" content="2025-10-28T14:02:05.000Z">
+<meta property="article:modified_time" content="2025-10-28T14:03:15.528Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="3-hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:\notes\cnbu.github.io\05%E3%80%81%E5%A4%A7%E6%95%B0%E6%8D%AE\assets\etdsedpxzp.png">
+
+
+<link rel="icon" href="/img/avata.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avata.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/cnbu"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:cnbu@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=31532665&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(2)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="大数据">
+            
+            大数据
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="2">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="return"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3-hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2025/10/28/hbase/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="hbase">hbase</span>
+            <span class="post-date" title="2025-10-28 22:02:05">2025/10/28</span>
+        </a>
+        
+        
+        <a  class="All 大数据 "
+           href="/2025/10/28/ClouderManager%E5%AE%89%E8%A3%85/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="ClouderManager安装">ClouderManager安装</span>
+            <span class="post-date" title="2025-10-28 21:50:30">2025/10/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-hbase" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">hbase</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">hexo</a>
+            
+            <a class="color2">3-hexo</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-10-28 22:03:15'>2025-10-28 22:02</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HBase-%E5%88%B7%E5%86%99%E4%B8%8E%E5%90%88%E5%B9%B6%E6%9C%BA%E5%88%B6"><span class="toc-text">HBase 刷写与合并机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%88%B7%E5%86%99%E5%92%8C%E5%90%88%E5%B9%B6"><span class="toc-text">为什么要进行刷写和合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flush-%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%92%8C%E5%8F%82%E6%95%B0"><span class="toc-text">Flush 触发条件和参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compaction-%E7%B1%BB%E5%9E%8B%E3%80%81%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA%E5%92%8C%E5%8F%82%E6%95%B0"><span class="toc-text">Compaction 类型、触发时机和参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compaction-%E8%A7%A6%E5%8F%91%E6%97%B6%E6%9C%BA"><span class="toc-text">Compaction 触发时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compaction-%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-text">Compaction 核心参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hbase-master-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86"><span class="toc-text">hbase master 日志清理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDFS%EF%BC%88hdfs-site-xml%EF%BC%89%E7%9B%B8%E5%85%B3%E8%B0%83%E6%95%B4"><span class="toc-text">HDFS（hdfs-site.xml）相关调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HBase%EF%BC%88hbase-site-xml%EF%BC%89%E7%9B%B8%E5%85%B3%E8%B0%83%E6%95%B4"><span class="toc-text">HBase（hbase-site.xml）相关调整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HBase%E8%A1%A8%E5%B1%9E%E6%80%A7%E8%B0%83%E6%95%B4"><span class="toc-text">HBase表属性调整</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Compression"><span class="toc-text">Compression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HFile-Block-Size"><span class="toc-text">HFile Block Size</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RegionServer%E8%8A%82%E7%82%B9%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-text">RegionServer节点硬件配置</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span><span class="string">hbase</span> <span class="string">shell</span></span><br><span class="line"><span class="number">1.1</span> <span class="string">进入hbase</span> <span class="string">shell</span></span><br><span class="line"><span class="string">./hbase</span> <span class="string">shell</span></span><br><span class="line"><span class="string">注意：当未配置全局环境变量时，需要在hbase安装bin目录下执行该命令。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##1.2 退出hbase shell</span></span><br><span class="line"><span class="string">exit</span></span><br><span class="line"><span class="comment">##2.查看表</span></span><br><span class="line"><span class="comment">##2.1 查看有哪些表</span></span><br><span class="line"><span class="string">list</span></span><br><span class="line"><span class="comment">##2.2 查看表详细信息</span></span><br><span class="line"><span class="string">describe</span> <span class="string">&#x27;table_name&#x27;</span></span><br><span class="line"><span class="comment">##2.3 查看表是否存在</span></span><br><span class="line"><span class="string">exists</span> <span class="string">&#x27;table_name&#x27;</span></span><br><span class="line"><span class="number">3</span><span class="string">.创建表、清表表、删除表</span></span><br><span class="line"><span class="comment">##3.1 创建表</span></span><br><span class="line"> <span class="string">create</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,</span> <span class="string">&#x27;info&#x27;</span></span><br><span class="line"><span class="string">注：info为列族。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##3.2 清空表</span></span><br><span class="line"><span class="string">truncate</span> <span class="string">&#x27;table_name&#x27;</span></span><br><span class="line"><span class="comment">##3.3 删除表</span></span><br><span class="line"><span class="string">disable</span> <span class="string">&#x27;table_name&#x27;</span></span><br><span class="line"><span class="string">注：先下线表才能删除表。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##3.4 删除整行数据</span></span><br><span class="line"><span class="string">deleteall</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#x27;rowkey_1&#x27;</span> </span><br><span class="line"><span class="string">注：删除rowkey为rowkey_1的整行数据。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##3.5 删除指定行健的字段</span></span><br><span class="line"><span class="string">delete</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#x27;rowkey_1&#x27;,&#x27;info:field1&#x27;</span></span><br><span class="line"><span class="number">4</span><span class="string">.查看数据</span></span><br><span class="line"><span class="comment">##4.1 查询第1行数据</span></span><br><span class="line"><span class="string">get</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#x27;1&#x27;</span></span><br><span class="line"><span class="comment">##4.2 查询多行数据</span></span><br><span class="line"><span class="string">scan</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#123;LIMIT=&gt;10&#125;</span></span><br><span class="line"><span class="string">注：类似select</span> <span class="string">*</span> <span class="string">from</span> <span class="string">table_name</span> <span class="string">limit</span> <span class="number">10</span><span class="string">;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##4.3 根据时间戳查询</span></span><br><span class="line"><span class="string">scan</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#123;COLUMNS=&gt;&#x27;info&#x27;,TIMESTAMP=&gt;1682546792234&#125;</span></span><br><span class="line"><span class="comment">##4.4 根据rowkey查询数据</span></span><br><span class="line"><span class="string">get</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#x27;rowkey_1&#x27;</span></span><br><span class="line"><span class="comment">##4.5 根据时间范围查询</span></span><br><span class="line"><span class="string">scan</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#123;TIMERANGE=&gt;[1682546792234,1682546992234]&#125;</span></span><br><span class="line"><span class="comment">##4.6 根据rowkey范围查询</span></span><br><span class="line"><span class="string">scan</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#123;STARTROW=&gt;&#x27;rowkey_1&#x27;,STOPROW=&gt;&#x27;rowkey_5&#x27;&#125;</span></span><br><span class="line"><span class="comment">##5.统计数据</span></span><br><span class="line"><span class="comment">##5.1 小表数据统计</span></span><br><span class="line"><span class="string">count</span> <span class="string">&#x27;table_name&#x27;</span></span><br><span class="line"><span class="comment">##5.2 大表数据统计</span></span><br><span class="line"><span class="string">org.apache.hadoop.hbase.mapreduce.RowCounter</span> <span class="string">&#x27;table_name&#x27;</span></span><br><span class="line"><span class="string">注：ROWS=XXX，就是最后的统计结果。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##5.3 统计指定rowkey范围的数据量</span></span><br><span class="line"><span class="string">count</span> <span class="string">&#x27;table_name&#x27;</span><span class="string">,&#123;STARTROW=&gt;&#x27;rowkey_1&#x27;,STOPROW=&gt;&#x27;rowkey_5&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="HBase-刷写与合并机制"><a href="#HBase-刷写与合并机制" class="headerlink" title="HBase 刷写与合并机制"></a>HBase 刷写与合并机制</h2><h3 id="为什么要进行刷写和合并"><a href="#为什么要进行刷写和合并" class="headerlink" title="为什么要进行刷写和合并"></a>为什么要进行刷写和合并</h3><p>HBase 是 Google BigTable 的开源实现，底层存储引擎是基于 LSM 树（Log-Structured Merge Tree）数据结构设计的。写入数据时会先写 WAL 日志，再将数据写到写缓存 MemStore 中，等写缓存达到一定规模或其他触发条件时会 Flush 刷写到磁盘，生成一个 HFile 文件，这样就将磁盘随机写变成了顺序写，提高了写性能。基本拓扑图：</p>
+<p><img src="D:\notes\cnbu.github.io\05、大数据\assets\etdsedpxzp.png"></p>
+<p>随着时间推移，写入的 HFile 会越来越多，读取数据时就会因为要进行多次io导致性能降低，因此 HBase 会定期执行 Compaction 操作以合并减少 HFile 数量，提升读性能。</p>
+<h3 id="Flush-触发条件和参数"><a href="#Flush-触发条件和参数" class="headerlink" title="Flush 触发条件和参数"></a>Flush 触发条件和参数</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">理解</span> <span class="string">Flush</span> <span class="string">的触发条件非常重要，从中我们也可以看出何时会阻塞写请求，总结有</span> <span class="number">7</span> <span class="string">种情况会触发</span> <span class="string">Flush：</span></span><br><span class="line"></span><br><span class="line"><span class="string">当一个</span> <span class="string">MemStore</span> <span class="string">大小达到阈值</span> <span class="string">hbase.hregion.memstore.flush.size（默认128M）时，会触发</span> <span class="string">MemStore</span> <span class="string">的刷写。这个时候不会阻塞写请求。</span></span><br><span class="line"></span><br><span class="line"><span class="string">当一个</span> <span class="string">Region</span> <span class="string">中所有</span> <span class="string">MemStore</span> <span class="string">总大小达到</span> <span class="string">hbase.hregion.memstore.block.multiplier</span> <span class="string">*</span> <span class="string">hbase.hregion.memstore.flush.size（默认4*128M=512M）时，会触发</span> <span class="string">MemStore</span> <span class="string">的刷写，并阻塞</span> <span class="string">Region</span> <span class="string">所有的写请求，此时写数据会出现</span> <span class="string">RegionTooBusyException</span> <span class="string">异常。</span></span><br><span class="line"></span><br><span class="line"><span class="string">当一个</span> <span class="string">RegionServer</span> <span class="string">中所有</span> <span class="string">MemStore</span> <span class="string">总大小达到</span> <span class="string">hbase.regionserver.global.memstore.size.lower.limit</span> <span class="string">*</span> <span class="string">hbase.regionserver.global.memstore.size</span> <span class="string">*</span> <span class="string">hbase_heapsize（低水位阈值，默认0.95</span> <span class="string">*</span> <span class="number">0.4</span> <span class="string">*</span> <span class="string">RS</span> <span class="string">堆大小）时，会触发</span> <span class="string">RegionServer</span> <span class="string">中内存占用大的</span> <span class="string">MemStore</span> <span class="string">的刷写；达到</span> <span class="string">hbase.regionserver.global.memstore.size</span> <span class="string">*</span> <span class="string">hbase_heapsize（高水位阈值，默认0.4</span> <span class="string">*</span> <span class="string">RS堆大小）时，不仅会触发</span> <span class="string">Memstore</span> <span class="string">的刷写，还会阻塞</span> <span class="string">RegionServer</span> <span class="string">所有的写请求，直到</span> <span class="string">Memstore</span> <span class="string">总大小降到低水位阈值以下。</span></span><br><span class="line"></span><br><span class="line"><span class="string">当一个</span> <span class="string">RegionServer</span> <span class="string">的</span> <span class="string">HLog</span> <span class="string">即WAL文件数量达到上限（可通过参数</span> <span class="string">hbase.regionserver.maxlogs</span> <span class="string">配置，默认32）时，也会触发</span> <span class="string">MemStore</span> <span class="string">的刷写，HBase</span> <span class="string">会找到最旧的</span> <span class="string">HLog</span> <span class="string">文件对应的</span> <span class="string">Region</span> <span class="string">进行刷写</span> <span class="string">。</span></span><br><span class="line"></span><br><span class="line"><span class="string">当一个</span> <span class="string">Region</span> <span class="string">的更新次数达到</span> <span class="string">hbase.regionserver.flush.per.changes（默认30000000即3千万）时，也会触发</span> <span class="string">MemStore</span> <span class="string">的刷写。</span></span><br><span class="line"> <span class="string">定期</span> <span class="string">hbase.regionserver.optionalcacheflushinterval（默认3600000即一个小时）进行</span> <span class="string">MemStore</span> <span class="string">的刷写，确保</span> <span class="string">MemStore</span> <span class="string">不会长时间没有持久化。为避免所有的</span> <span class="string">MemStore</span> <span class="string">在同一时间进行</span> <span class="string">flush</span> <span class="string">而导致问题，定期的</span> <span class="string">flush</span> <span class="string">操作会有一定时间的随机延时。</span></span><br><span class="line"> <span class="string">手动执行</span> <span class="string">flush</span> <span class="string">操作，我们可以通过</span> <span class="string">hbase</span> <span class="string">shell</span> <span class="string">或</span> <span class="string">API</span> <span class="string">对一张表或一个</span> <span class="string">Region</span> <span class="string">进行</span> <span class="string">flush。</span></span><br><span class="line"><span class="string">上面是</span> <span class="string">Flush</span> <span class="string">的几个触发条件，从中我们拿到</span> <span class="number">5</span> <span class="string">个和</span> <span class="string">Flush</span> <span class="string">有关的重要参数，并给出调整建议：</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span><span class="string">、hbase.hregion.memstore.flush.size</span></span><br><span class="line"></span><br><span class="line"><span class="string">默认值</span> <span class="string">128M，单个</span> <span class="string">MemStore</span> <span class="string">大小超过该阈值就会触发</span> <span class="string">Flush。如果当前集群</span> <span class="string">Flush</span> <span class="string">比较频繁，并且内存资源比较充裕，建议适当调整为</span> <span class="string">256M。调大的副作用可能是造成宕机时需要分裂的</span> <span class="string">HLog</span> <span class="string">数量变多，从而延长故障恢复时间。</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span><span class="string">、hbase.hregion.memstore.block.multiplier</span></span><br><span class="line"></span><br><span class="line"><span class="string">默认值</span> <span class="number">4</span><span class="string">，Region</span> <span class="string">中所有</span> <span class="string">MemStore</span> <span class="string">超过单个</span> <span class="string">MemStore</span> <span class="string">大小的倍数达到该参数值时，就会阻塞写请求并强制</span> <span class="string">Flush。一般不建议调整，但对于写入过快且内存充裕的场景，为避免写阻塞，可以适当调整到5~8。</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span><span class="string">、hbase.regionserver.global.memstore.size</span></span><br><span class="line"></span><br><span class="line"><span class="string">默认值</span> <span class="number">0.4</span><span class="string">，RegionServer</span> <span class="string">中所有</span> <span class="string">MemStore</span> <span class="string">大小总和最多占</span> <span class="string">RegionServer</span> <span class="string">堆内存的</span> <span class="number">40</span><span class="string">%。这是写缓存的总比例，可以根据实际场景适当调整，且要与</span> <span class="string">HBase</span> <span class="string">读缓存参数</span> <span class="string">hfile.block.cache.size（默认也是0.4）配合调整。旧版本参数名称为</span> <span class="string">hbase.regionserver.global.memstore.upperLimit。</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span><span class="string">、hbase.regionserver.global.memstore.size.lower.limit</span></span><br><span class="line"></span><br><span class="line"><span class="string">默认值</span> <span class="number">0.95</span><span class="string">，表示</span> <span class="string">RegionServer</span> <span class="string">中所有</span> <span class="string">MemStore</span> <span class="string">大小的低水位是</span> <span class="string">hbase.regionserver.global.memstore.size</span> <span class="string">的</span> <span class="number">95</span><span class="string">%，超过该比例就会强制</span> <span class="string">Flush。一般不建议调整。旧版本参数名称为</span> <span class="string">hbase.regionserver.global.memstore.lowerLimit。</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span><span class="string">、hbase.regionserver.optionalcacheflushinterval</span></span><br><span class="line"></span><br><span class="line"><span class="string">默认值</span> <span class="number">3600000</span><span class="string">（即</span> <span class="number">1</span> <span class="string">小时），HBase</span> <span class="string">定期</span> <span class="string">Flush</span> <span class="string">所有</span> <span class="string">MemStore</span> <span class="string">的时间间隔。一般建议调大，比如</span> <span class="number">10</span> <span class="string">小时，因为很多场景下</span> <span class="number">1</span> <span class="string">小时</span> <span class="string">Flush</span> <span class="string">一次会产生很多小文件，一方面导致</span> <span class="string">Flush</span> <span class="string">比较频繁，另一方面导致小文件很多，影响随机读性能，因此建议设置较大值。</span></span><br><span class="line"></span><br><span class="line"><span class="string">上面就是</span> <span class="string">Flush</span> <span class="string">的触发条件及核心参数，理解并适当调整参数有利于维护</span> <span class="string">HBase</span> <span class="string">集群的稳定性。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Compaction-类型、触发时机和参数"><a href="#Compaction-类型、触发时机和参数" class="headerlink" title="Compaction 类型、触发时机和参数"></a>Compaction 类型、触发时机和参数</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">从上面分析我们知道，HBase</span> <span class="string">会定期执行</span> <span class="string">Compaction</span> <span class="string">合并</span> <span class="string">HFile，提升读性能，其实就是以短时间内的io消耗，换取相对稳定的读取性能。</span></span><br><span class="line"><span class="string">Compaction</span> <span class="string">类型</span></span><br><span class="line"><span class="string">Compaction</span> <span class="string">分为两种：Minor</span> <span class="string">Compaction</span> <span class="string">与</span> <span class="string">Major</span> <span class="string">Compaction，可以称为小合并、大合并，简单示意图</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\notes\cnbu.github.io\05、大数据\assets\15zwjw4ce3-1722932822003-7.png"></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Minor</span> <span class="string">Compaction</span> <span class="string">是指选取一些小的、相邻的</span> <span class="string">HFile</span> <span class="string">将他们合并成一个更大的</span> <span class="string">HFile。默认情况下，Minor</span> <span class="string">Compaction</span> <span class="string">会删除选取</span> <span class="string">HFile</span> <span class="string">中的</span> <span class="string">TTL</span> <span class="string">过期数据。</span></span><br><span class="line"></span><br><span class="line"><span class="string">Major</span> <span class="string">Compaction</span> <span class="string">是指将一个</span> <span class="string">Store</span> <span class="string">中所有的</span> <span class="string">HFile</span> <span class="string">合并成一个</span> <span class="string">HFile，这个过程会清理三类没有意义的数据：被删除的数据（打了</span> <span class="string">Delete</span> <span class="string">标记的数据）、TTL</span> <span class="string">过期数据、版本号超过设定版本号的数据。另外，一般情况下，Major</span> <span class="string">Compaction</span> <span class="string">时间会持续比较长，整个过程会消耗大量系统资源，对上层业务有比较大的影响。因此，生产环境下通常关闭自动触发</span> <span class="string">Major</span> <span class="string">Compaction</span> <span class="string">功能，改为手动在业务低峰期触发。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Compaction-触发时机"><a href="#Compaction-触发时机" class="headerlink" title="Compaction 触发时机"></a>Compaction 触发时机</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">概括的说，HBase 会在三种情况下检查是否要触发 Compaction，分别是 MemStore Flush、后台线程周期性检查、手动触发。</span><br><span class="line"></span><br><span class="line">MemStore Flush：可以说 Compaction 的根源就在于Flush，MemStore 达到一定阈值或触发条件就会执行 Flush 操作，在磁盘上生成 HFile 文件，正是因为 HFile 文件越来越多才需要 Compact。HBase 每次Flush 之后，都会判断是否要进行 Compaction，一旦满足 Minor Compaction 或 Major Compaction 的条件便会触发执行。</span><br><span class="line">后台线程周期性检查： 后台线程 CompactionChecker 会定期检查是否需要执行 Compaction，检查周期为 hbase.server.thread.wakefrequency * hbase.server.compactchecker.interval.multiplier，这里主要考虑的是一段时间内没有写入仍然需要做 Compact 检查。其中参数 hbase.server.thread.wakefrequency 默认值 10000 即 10s，是 HBase 服务端线程唤醒时间间隔，用于 LogRoller、MemStoreFlusher 等的周期性检查；参数 hbase.server.compactchecker.interval.multiplier 默认值1000，是 Compaction 操作周期性检查乘数因子，10 * 1000 s 时间上约等于2hrs, 46mins, 40sec。</span><br><span class="line">手动触发：通过 HBase Shell、Master UI 界面或 HBase API 等任一种方式执行 compact、major_compact等命令，会立即触发 Compaction。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Compaction-核心参数"><a href="#Compaction-核心参数" class="headerlink" title="Compaction 核心参数"></a>Compaction 核心参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> Compaction 有关的重要参数，并给出调整建议：</span><br><span class="line"></span><br><span class="line">1、hbase.hstore.compaction.min</span><br><span class="line">默认值 3，一个 Store 中 HFile 文件数量超过该阈值就会触发一次 Compaction（Minor Compaction），这里称该参数为 minFilesToCompact。一般不建议调小，重写场景下可以调大该参数，比如 5~10 之间，注意相应调整下一个参数。老版本参数名称为 hbase.hstore.compactionthreshold。</span><br><span class="line"></span><br><span class="line">2、hbase.hstore.compaction.max</span><br><span class="line">默认值 10，一次 Minor Compaction 最多合并的 HFile 文件数量，这里称该参数为 maxFilesToCompact。这个参数也控制着一次压缩的耗时。一般不建议调整，但如果上一个参数调整了，该参数也应该相应调整，一般设为 minFilesToCompact 的 2~3 倍。</span><br><span class="line"></span><br><span class="line">3、hbase.regionserver.thread.compaction.throttle</span><br><span class="line">HBase RegionServer 内部设计了两个线程池 large compactions 与 small compactions，用来分离处理 Compaction 操作，该参数就是控制一个 Compaction 交由哪一个线程池处理，默认值是 2 * maxFilesToCompact * hbase.hregion.memstore.flush.size（默认2*10*128M=2560M即2.5G），建议不调整或稍微调大。</span><br><span class="line"></span><br><span class="line">4、hbase.regionserver.thread.compaction.large/small</span><br><span class="line">默认值 1，表示 large compactions 与 small compactions 线程池的大小。一般建议调整到 2~5，不建议再调太大比如10，否则可能会消费过多的服务端资源造成不良影响。</span><br><span class="line"></span><br><span class="line">5、hbase.hstore.blockingStoreFiles</span><br><span class="line">默认值 10，表示一个 Store 中 HFile 文件数量达到该值就会阻塞写入，等待 Compaction 的完成。一般建议调大点，比如设置为 100，避免出现阻塞更新的情况，阻塞日志如下：</span><br><span class="line"></span><br><span class="line">too many store files; delaying flush up to 90000ms</span><br><span class="line">生产环境建议认真根据实际业务量做好集群规模评估，如果小集群遇到了持续写入过快的场景，合理扩展集群也非常重要。</span><br><span class="line"></span><br><span class="line">6、hbase.hregion.majorcompaction</span><br><span class="line">默认值 604800000 ms 即7天，这是 Major Compaction 周期性触发执行的时间间隔。通常 Major Compaction 持续时间较长、资源消耗较大，一般设为 0，表示关闭自动触发，建议在业务低峰期时手动执行。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="hbase-master-日志清理"><a href="#hbase-master-日志清理" class="headerlink" title="hbase master 日志清理"></a>hbase master 日志清理</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">目前默认配置的清除器插件有ReplicationLogCleaner、SnapshotLogCleaner和TimeToLiveLogCleaner这三种：</span><br><span class="line"></span><br><span class="line">ReplicationLogCleaner:如果有跨集群数据同步的需求，通过该Cleaner来保证那些在同步中的日志不被删除；</span><br><span class="line">SnapshotLogCleaner:被表的snapshot使用到了的wal不被删除；</span><br><span class="line">TimeToLiveLogCleaner:日志文件最后修改时间在配置参数&#123;hbase.master.logcleaner.ttl默认600秒&#125;之前的可以删除。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="HDFS（hdfs-site-xml）相关调整"><a href="#HDFS（hdfs-site-xml）相关调整" class="headerlink" title="HDFS（hdfs-site.xml）相关调整"></a>HDFS（hdfs-site.xml）相关调整</h2><ul>
+<li>dfs.datanode.synconclose &#x3D; true</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfs.datanode.synconclose set to false in hdfs-site.xml: data loss is possible on hard system reset or power loss</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>mount ext4 with dirsync! Or use XFS</li>
+<li>dfs.datanode.sync.behind.writes &#x3D; true (default false)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置为true，在数据写入完成之后，datanode会要求操作系统将数据直接同步到磁盘</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>dfs.namenode.avoid.read.stale.datanode &#x3D; true (default false)</li>
+<li>dfs.namenode.avoid.write.stale.datanode &#x3D; true (default false)</li>
+<li>dfs.namenode.stale.datanode.interval &#x3D; 30000 (default 30000)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">避免读写declared dead的datanode，datanode会发送心跳给namenode,如果超过了dfs.namenode.stale.datanode.interval的时间还未接收到datanode的心跳，则认为该datanode为stale状态，也就会将datanode declare成dead。默认情况下，namenode仍然会对stale状态的datanode读</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>dfs.datanode.failed.volumes.tolerated &#x3D; <N></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keep DN running with some failed disks,tolerate losing this many disks，根据磁盘实际配置数量调整</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>dfs.client.read.shortcircuit &#x3D; true</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启用短路径读取(short-circuit)：</span><br><span class="line">当client请求数据时，datanode会读取数据然后通过TCP协议发送给client，short-circuit绕过了datanode直接读取数据。</span><br><span class="line">short-circuit的前提是client和数据在同一个节点上，所以集群hbase regionserver和hdfs datanode的数量上一般都是1:1，并且datanode和regionserver共处一个节点。</span><br><span class="line">除此之后，指标Locality（数据本地性）需要额外关注，因为更高的数据本地性，可以使短路径发挥更好的性能</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>dfs.datanode.max.transfer.threads &#x3D; 8192 (default 4096)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Specifies the maximum number of threads to use for transferring data in and out of the DN.</span><br><span class="line">An HDFS DataNode has an upper bound on the number of files that it will serve at any one time详见：https://hbase.apache.org/book.html#dfs.datanode.max.transfer.threadshttp://www.larsgeorge.com/2012/03/hadoop-hbase-and-xceivers.html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>dfs.namenode.handler.count &#x3D; 64 (default 10)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The number of Namenode RPC server threads that listen to requests from clients. If dfs.namenode.servicerpc-address is not configured then Namenode RPC server threads listen to requests from all nodes.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>dfs.datanode.handler.count &#x3D; 8 (default 10)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The number of server threads for the datanode.</span><br></pre></td></tr></table></figure>
+
+<h2 id="HBase（hbase-site-xml）相关调整"><a href="#HBase（hbase-site-xml）相关调整" class="headerlink" title="HBase（hbase-site.xml）相关调整"></a>HBase（hbase-site.xml）相关调整</h2><ul>
+<li>hbase.hstore.blockingStoreFiles &#x3D; 100</li>
+<li>hbase.hregion.memstore.block.multiplier &#x3D; 4</li>
+<li>hbase.hregion.memstore.flush.size &#x3D; 128</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果storefile的数量超过了10个，就会阻塞flush，compact线程进行合并（如果观察日志，你会看到类似&quot;Too many HFiles, delaying flush&quot;之类的输出），如果想让数据写入更加平滑或者业务写入量巨大，可以考虑增大该值。</span><br><span class="line">另外，在达到了blockingStoreFiles阀值的时候，开始阻塞flush，那么memstore就会膨胀，当memstore膨胀到 flush size 乘于 multiplier（flush size X multiplier）的时候，这个列簇的</span><br><span class="line">写操作就会被阻塞，一直到flush完成（可以关注日志，会有相关日志输出）。</span><br><span class="line">所以如果写入量巨大，建议同时增加multiplier大小，至于flush size的大小，一般默认即可</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hbase.regionserver.handler.count &#x3D; 30</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">每个regionserver启动的RPC Listener实例个数，hbase.master.handler.count参数意思跟它基本一样。handler个数并非越多越好，如果设置了过多的handler可能得到一个适得其反的结果</span><br><span class="line">如果是read-only的场景，handler的个数接近与cpu个数比较好。在调整该参数时候，建议设置为cpu个数的倍数，从两倍cpu个数开始调整。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hbase.hregion.max.filesize &#x3D; 10G</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">控制region split的阀值，需要注意：如果有多个列簇，不管哪个列簇达到了该值，就会触发split，并且是region级别的，哪怕其他的列簇的hfile值还很小</span><br><span class="line">目前来说，推荐的最大region size为10-20G，当然也可以设置的更大，比如50G（如果设置了压缩，该值指的是压缩之后的大小）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hbase.regionserver.region.split.policy &#x3D; SteppingSplitPolicy</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split算法有多种，不一一介绍了。默认是SteppingSplitPolicy算法，可以根据实际场景情况选择更为合适的，比如对于已知数据大小的历史数据，可以将表的split算法设置为org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy，以实现更好的控制region数目</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>zookeeper.session.timeout &#x3D; 90000(default,in milliseconds)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">regionserver与zookeeper建立session，zookeeper通过session来确认regionserver的状态，每个regionserver在zookeeper中都有自己的临时znode。如果建立的session断开了或者超时了（比如gc或者网络问题），那么zk中的这个regionserver的临时znode将被删除，并且该regionserver标记为crashed。</span><br><span class="line"></span><br><span class="line">1.在设置该参数值需要注意，要关注zookeeper server的Minimum session timeout和Maximum session timeout，zookeeper默认Minimum session timeout 为 2 X tick time，Maximum session timeout 为 20 x tick time，tick time为心跳间隔（默认2秒）。</span><br><span class="line">也就是说你在hbase侧设置的最大会话超时时间在是以client的身份设置的，所以最终还是以zookeeper server为主。（在cdh集群中，如果hbase的该参数值大于zk server的最大会话超时时间，会提示你修改）,比如你在hbase侧设置最大超时时间为90s,但是zk的最大超时时间是40s，那么最终还是如果超过40s便视为超时。</span><br><span class="line"></span><br><span class="line">2.如果想增加hbase超时时间限制，可以提高tick time的值，但是建议不要超过5秒，超过5秒不利于zookeeper集群的正常运行</span><br><span class="line"></span><br><span class="line">3.对于那种failing quickly is better than waiting的应用，可以将超时时间限定小一些（建议值20秒-30秒），但是在此之前，你需要对GC的时间有一个良好的控制。否则会因为GC导致regionserver频繁被标记为crashed</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hbase.regionserver.thread.compaction.small &#x3D; 1 (default)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用于minor compact的线程数，当compact quene比较高的时候，建议增加该值。但是需要注意的是：该线程数永远不要超过你可用磁盘数目的一半。</span><br><span class="line">比如：你有8块SSDs, 该值不要超过4</span><br><span class="line"></span><br><span class="line">同理hbase.hstore.flusher.count</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hbase.hregion.majorcompaction &#x3D; 0</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">major compact时间周期，默认七天，但是触发时间点往往都不是最佳的。所以一般线上环境都禁用major compact，然后在合适的时间手动执行</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hbase.regionserver.hlog.blocksize &#x3D; 128M (default)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">默认即可，但是需要了解的是WAL一般在达到该值的95%的时候就会滚动</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hbase.regionserver.maxlogs &#x3D; 32 (default)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">配置WAL Files的数量，(WAL:to recover memstore data not yet flushed to disk if a RegionServer crashes)，WAL files过少的话，会触发更多的flush,太多的话，hbase recovery时间会比较长。</span><br><span class="line"></span><br><span class="line">根据不同的regionserver堆大小设置不同数量的WAL。有一个经验公式：</span><br><span class="line">(regionserver_heap_size * memstore fraction) / (default_WAL_size)</span><br><span class="line"></span><br><span class="line">例如，HBase集群配置如下:</span><br><span class="line">    • 16 GB RegionServer heap</span><br><span class="line">    • 0.4 memstore fraction</span><br><span class="line">    • 120 MB default WAL size</span><br><span class="line">The formula for this configuration looks as follows:</span><br><span class="line">(16384 MB * 0.4 / 120 MB = approximately 55 WAL files</span><br><span class="line"></span><br><span class="line">注意：如果recovery的时间过长，可以减小上面计算的值</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hbase.wal.provider &#x3D; mutiwal</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">默认情况下，一个regionserver只有一个wal文件，所有region的walEntry都写到这个wal文件中，在HBase-5699之后，一个regionserver可以配置多个wal文件，这样可以提高写WAL时的吞吐，进而降低数据写延时，其中配置hbase.wal.regiongrouping.strategy决定了每个region写入wal时的分组策略，默认是bounded，表示每个regiongroup写入固定数量个wal；</span><br><span class="line"></span><br><span class="line">Multiple Wal:HBASE-5669(available in hbase 1.0.0+)</span><br><span class="line"></span><br><span class="line">1.版本低于1.2.0 replication存在问题</span><br><span class="line">2.写入性能较单WAL提升20%</span><br><span class="line">3.hbase.wal.regiongrouping.strategy = bounded（分组策略）</span><br><span class="line">4.hbase.wal.regiongrouping.numgroups = 2(根据盘数设置)</span><br><span class="line">注意：hbase.regionserver.maxlogs，决定了一个regionserver中wal文件的最大数量，默认是32，在上述配置下，如果仍旧设置保持32，等价于不使用multiwal时的64；</span><br></pre></td></tr></table></figure>
+
+<h2 id="HBase表属性调整"><a href="#HBase表属性调整" class="headerlink" title="HBase表属性调整"></a>HBase表属性调整</h2><h3 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.可以选择的有NONE, GZIP, SNAPPY, 等等</span><br><span class="line">2.指定压缩方式：create ’test&#x27;, &#123;NAME =&gt; ’cf&#x27;, COMPRESSION =&gt; &#x27;SNAPPY’&#125;&#125;</span><br><span class="line">3.节省磁盘空间</span><br><span class="line">4.压缩针对的是整个块，对get或scan不太友好</span><br><span class="line">5.缓存块的时候不会使用压缩，除非指定hbase.block.data.cachecompressed = true，这样可以缓存更多的块，但是读取数据时候，需要进行解压缩</span><br></pre></td></tr></table></figure>
+
+<h3 id="HFile-Block-Size"><a href="#HFile-Block-Size" class="headerlink" title="HFile Block Size"></a>HFile Block Size</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 不等同于HDFS block size</span><br><span class="line">2. 指定BLOCKSIZE属性</span><br><span class="line">    create ‘test′,&#123;NAME =&gt; ‘cf′, BLOCKSIZE =&gt; ’4096&#x27;&#125;</span><br><span class="line">3.默认64KB,对Scan和Get等同的场景比较友好</span><br><span class="line">4.增加该值有利于scan</span><br><span class="line">5.减小该值有利于get</span><br></pre></td></tr></table></figure>
+
+<h2 id="RegionServer节点硬件配置"><a href="#RegionServer节点硬件配置" class="headerlink" title="RegionServer节点硬件配置"></a>RegionServer节点硬件配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">大多时候，对于hbase集群我们会面临这样的问题：</span><br><span class="line">    • 应该分配多少的RAM/heap?</span><br><span class="line">    • 应该准备多少块磁盘？</span><br><span class="line">    • 磁盘的大小应该多大？</span><br><span class="line">    • 网卡带宽？</span><br><span class="line">    • 应该有多少个cpu core?</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">regionserver的磁盘大小与堆大小是有一个比例的：</span><br><span class="line">Disk/Heap ratio:</span><br><span class="line">RegionSize / MemstoreSize *ReplicationFactor *HeapFractionForMemstores * 2</span><br><span class="line"> </span><br><span class="line">那么在默认情况下，该比例等于：10gb/128mb * 3 * 0.4 * 2 = 192</span><br><span class="line"></span><br><span class="line">也就是说：</span><br><span class="line">在磁盘上每存储192字节的数据，对应堆的大小应为1字节</span><br><span class="line">那么如果设置32G的堆，磁盘上也就是可以存储大概6TB的数据(32gb * 192 = 6tb)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">理想状况下regionserver的硬件配置：</span><br><span class="line">    1.每个节点&lt;=6TB的磁盘空间</span><br><span class="line">    2.regionserver heap 约等于磁盘大小/200（上面的比例公式）</span><br><span class="line">    3.由于hbase属于cpu密集型，所以较多的cpu core数量更适合</span><br><span class="line">    4.网卡带宽和磁盘吞吐量的匹配值：</span><br><span class="line">            （背景：磁盘使用传统HDD，I/O 100M/s）</span><br><span class="line">        CASE1：1GE的网卡，配备24块磁盘，像这样的搭配是不太理想的，因为1GE的网卡流量等于125M/s，而24块磁盘的吞吐量大概2.4GB/s，网卡成为瓶颈</span><br><span class="line">        CASE2：10GE的网卡，配备24块磁盘，比较理想</span><br><span class="line">        CASE3：1GE的网卡，配置4-6块磁盘，也是比较理想的</span><br></pre></td></tr></table></figure>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
